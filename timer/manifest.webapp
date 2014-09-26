@@ -1,0 +1,13 @@
+{
+  "version": "0.0.12",
+  "name": "Timer",
+  "description": "Удобный таймер для измерения продолжительности чего угодно",
+  "launch_path": "/apps/timer/index.html",
+  "appcache_path": "/apps/timer/offline.appcache",
+  "developer": {
+    "name": "Nikolay Marow",
+    "url": "http://marow.net/"
+  },
+  "installs_allowed_from": ["*"],
+  "default_locale": "ru"
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <style>
+	body {
+		font-size: 18px
+		padding: 0;
+		margin: 0;
+	}
+	
+	.apps,
+	h1 {
+		margin: 0 auto 50px;
+		max-width: 80%;
+		min-width: 100px;
+	}
+	a {
+		display: block;
+	}
+  </style>
+  
+</head>
+<body>
+    <h1>Apps</h1>
+    <ul class="apps">
+        <li>
+            <a href="##" id="timer" class="apps__item">Таймер</a>
+        </li>
+    </ul>
+
+<script>
+    (function () {
+        var apps = document.querySelector('.apps');
+        var loc = location;
+
+        apps.addEventListener('click', function (event) {
+            console.log('ddd');
+            if (event.target.className === "apps__item") {
+                event.preventDefault();
+                install(event.target.id);
+            }
+        }, false);
+
+        function install (type) {
+            var request = window.navigator.mozApps.install(loc.protocol + "//" + loc.host + "/apps/" + type + "/manifest.webapp");
+            request.onsuccess = function () {
+                var appRecord = this.result;
+                alert('Installation successful!');
+            };
+            request.onerror = function () {
+                alert('Install failed, error: ' + this.error.name);
+            };
+        }
+    })();
+</script>
+
+</body>
+</html>
